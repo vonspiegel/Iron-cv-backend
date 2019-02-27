@@ -102,8 +102,8 @@ User model
 username - String // required
 email - String // required & unique
 password - String // required
-content - [ObjectID<Content>]
-cv - [ObjectID<CV>]
+contentId - [ObjectID<Content>]
+cvId - [ObjectID<CV>]
 ```
 
 Content model
@@ -119,7 +119,7 @@ list - [String]
 CV model
 ```
 name - String // required
-content - [ObjectID<Content>]
+contentId - [ObjectID<Content>]
 ```
 
 ## API Endpoints (backend routes)

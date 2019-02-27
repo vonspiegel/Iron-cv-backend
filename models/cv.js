@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
+const cvSchema = new Schema({
+  name: String,
   contentId: [String],
-  cvId: [String],
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -14,6 +11,6 @@ const userSchema = new Schema({
   },
 });
 
-const User = mongoose.model('User', userSchema);
+const Cv = mongoose.model('Cv', cvSchema);
 
-module.exports = User;
+module.exports = Cv;

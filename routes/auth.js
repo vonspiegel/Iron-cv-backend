@@ -6,6 +6,7 @@ const User = require('../models/user');
 
 const { isLoggedIn } = require('../helpers/middlewares');
 
+
 router.get('/me', (req, res, next) => {
   if (req.session.currentUser) {
     res.json(req.session.currentUser);
