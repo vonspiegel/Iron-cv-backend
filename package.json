@@ -24,6 +24,7 @@
     "mongoose": "^5.4.16",
     "morgan": "~1.9.0",
     "node-gyp": "^3.8.0",
+    "router-express": "^1.5.2",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
