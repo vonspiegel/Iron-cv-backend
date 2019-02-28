@@ -3,9 +3,15 @@ const Schema = mongoose.Schema;
 
 const contentSchema = new Schema({
   type: String,
-  name: String,
-  startDate: Date,
-  endDate: Date,
+  title: String,
+  startDate: {
+    month: String,
+    year: String
+  },
+  endDate: {
+    month: String,
+    year: String
+  },
   description: String,
   list: [String],
 }, {
