@@ -14,7 +14,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { name, contentId } = req.body;
-
   const newCv = new Cv({
     name,
     contentId,
