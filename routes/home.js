@@ -3,14 +3,29 @@ const Cv = require('../models/cv');
 
 const router = express.Router();
 
-router.get('/home', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Cv.find({})
-    .then((cv) => {
-      res.render('/home', { cv, title: 'Iron-cv' })
+    .then((cvList) => {
+      res.status(200)
+      res.json(cvList);
     })
-    .catch((error) => {
-      console.log('error');
-    })
-})
+    .catch(next)
+});
+
+router.post('/', (req, res, next) => {
+  const { name, contentId } = req.body;
+
+  const newCv = new Cv({
+    name,
+    contentId,
+  });
+  
+  newCv.save()
+  .then((cv)=> {
+    res.status(200)
+    res.json({cv: newCv})
+  })
+  .catch(next)
+});
 
 module.exports = router;
