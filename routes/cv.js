@@ -68,11 +68,11 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
-  const deleteCVToUser = User.findByIdAndUpdate(_id, { $splice: (cv._id , 1) });
+  const deleteCVToUser = User.findByIdAndUpdate(id, { $splice: (id , 1) });
 
   Cv.findByIdAndDelete(id)
-    .then((response) => {
-      console.log(response)
+    .then((cv) => {
+      console.log(cv)
       res.status(200);
       res.json({ 
         message: "deleted",
