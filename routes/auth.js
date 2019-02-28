@@ -63,7 +63,7 @@ router.post('/signup', (req, res, next) => {
       error: 'empty'
     });
   }
-
+  
   User.findOne({
       username
     }, 'username')
