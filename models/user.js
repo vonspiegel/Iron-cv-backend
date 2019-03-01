@@ -5,7 +5,18 @@ const ObjectId = Schema.Types.ObjectId
 const userSchema = new Schema({
   username: String,
   password: String,
-  email: String,
+  contact: {
+    firstName: String,
+    lastName: String,
+    email: String,
+    address: String,
+    phone: String,
+  },
+  socialNet: {
+    github: String,
+    facebook: String,
+    linkedin: String,
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',

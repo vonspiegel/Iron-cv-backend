@@ -51,10 +51,10 @@ router.get('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
-  const { name, contentId } = req.body;
+  const { name, user } = req.body;
   const cvToUpdate = {
     name,
-    contentId,
+    user,
   };
   Cv.findByIdAndUpdate(id, cvToUpdate)
     .then((cv) => {
@@ -68,7 +68,7 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
-  const deleteCVToUser = User.findByIdAndUpdate(id, { $splice: (id , 1) });
+  // const deleteCVToUser = User.findByIdAndUpdate(id, { $splice: (id , 1) });
   Cv.findByIdAndDelete(id)
     .then((cv) => {
       res.status(200);
