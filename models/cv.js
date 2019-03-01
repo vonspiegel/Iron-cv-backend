@@ -5,13 +5,10 @@ const ObjectId = Schema.Types.ObjectId;
 
 const cvSchema = new Schema({
   name: String,
-  // contentId: [String],
-  // add
-  userId: [{
+  userId: {
       type: ObjectId,
       ref: 'User'
-    }],
-  // add
+    },
 }, {
   timestamps: {
     createdAt: 'created_at',

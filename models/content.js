@@ -15,16 +15,14 @@ const contentSchema = new Schema({
   },
   description: String,
   list: [String],
-  // add
-  userId: [{
+  user: {
     type: ObjectId,
     ref: 'User'
-  }],
+  },
   cvId: [{
     type: ObjectId,
     ref: 'Cv'
   }],
-  // add
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -28,7 +28,7 @@ router.put('/cv/:id', (req, res, next) => {
   Content.findByIdAndUpdate(id, contentToUpdate)
     .then((content) => {
       res.status(200);
-      res.json({ 
+      res.json({
         message: "updated",
         content: content });
     })
@@ -41,7 +41,7 @@ router.delete('/cv/:id', (req, res, next) => {
   Content.findByIdAndDelete(id)
     .then((content) => {
       res.status(200);
-      res.json({ 
+      res.json({
         message: "deleted",
         content: content });
     })

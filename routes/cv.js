@@ -5,9 +5,8 @@ const User = require('../models/user')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  console.log('cvId', res.body)
-  // const {cvId} =res.body
-  Cv.find({})
+  const { _id } = req.session.currentUser;
+  Cv.find({userId: _id})
     .then((cvList) => {
       res.status(200)
       res.json(cvList);
@@ -15,28 +14,30 @@ router.get('/', (req, res, next) => {
     .catch(next)
 });
 
-
 router.post('/', (req, res, next) => {
-  const { name, contentId } = req.body;
-  const { _id } = req.session.currentUser;
-  // console.log('currentUser ID', _id)
+  const { name, user } = req.body;
+  console.log('currentUser ID2', user._id)
   const newCv = new Cv({
     name,
-    contentId,
+    userId: user._id,
   });
-
-  const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvId: newCv._id } })
+  // const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvId: newCv._id } })
   const saveCV = newCv.save()
-  // console.log('saveCv',saveCV)
-  Promise.all([addCVToUser, saveCV])
-    .then((response) => {
-      // console.log(response)
+      .then((response) => {
+      console.log(response)
       res.status(200)
       res.json(response)
     })
     .catch(next)
+  console.log('saveCv',saveCV)
+  // Promise.all([addCVToUser, saveCV])
+  //   .then((response) => {
+  //     console.log(respoßnse)
+  //     res.status(200)
+  //     res.json(response)
+  //   })
+  //   .catch(next)
 });
-
 
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
@@ -48,7 +49,6 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 });
 
-
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
   const { name, contentId } = req.body;
@@ -56,7 +56,6 @@ router.put('/:id', (req, res, next) => {
     name,
     contentId,
   };
-
   Cv.findByIdAndUpdate(id, cvToUpdate)
     .then((cv) => {
       res.status(200);
@@ -67,14 +66,11 @@ router.put('/:id', (req, res, next) => {
     .catch(next)
 });
 
-
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
   const deleteCVToUser = User.findByIdAndUpdate(id, { $splice: (id , 1) });
-
   Cv.findByIdAndDelete(id)
     .then((cv) => {
-      // console.log('delete-backend',cv)
       res.status(200);
       res.json({
         message: "deleted",

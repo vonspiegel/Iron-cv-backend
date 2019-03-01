@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
 const User = require('../models/user');
-
 const { isLoggedIn } = require('../helpers/middlewares');
 
 
@@ -63,7 +61,7 @@ router.post('/signup', (req, res, next) => {
       error: 'empty'
     });
   }
-  
+
   User.findOne({
       username
     }, 'username')
@@ -76,7 +74,6 @@ router.post('/signup', (req, res, next) => {
 
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
-
       const newUser = User({
         username,
         password: hashPass,
