@@ -5,40 +5,41 @@ const User = require('../models/user')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
+  console.log('cvId', res.body)
+  // const {cvId} =res.body
   Cv.find({})
     .then((cvList) => {
-
       res.status(200)
       res.json(cvList);
     })
     .catch(next)
 });
 
+
 router.post('/', (req, res, next) => {
   const { name, contentId } = req.body;
-
   const { _id } = req.session.currentUser;
-
+  // console.log('currentUser ID', _id)
   const newCv = new Cv({
     name,
     contentId,
   });
 
-  const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvs: newCv._id } })
+  const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvId: newCv._id } })
   const saveCV = newCv.save()
-
+  // console.log('saveCv',saveCV)
   Promise.all([addCVToUser, saveCV])
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       res.status(200)
       res.json(response)
     })
     .catch(next)
 });
 
+
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
-
   Cv.findById(id)
     .then((cv) => {
       res.status(200);
@@ -46,6 +47,7 @@ router.get('/:id', (req, res, next) => {
     })
     .catch(next)
 });
+
 
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
@@ -58,7 +60,7 @@ router.put('/:id', (req, res, next) => {
   Cv.findByIdAndUpdate(id, cvToUpdate)
     .then((cv) => {
       res.status(200);
-      res.json({ 
+      res.json({
         message: "updated",
         cv: cv });
     })
@@ -72,14 +74,13 @@ router.delete('/:id', (req, res, next) => {
 
   Cv.findByIdAndDelete(id)
     .then((cv) => {
-      console.log(cv)
+      // console.log('delete-backend',cv)
       res.status(200);
-      res.json({ 
+      res.json({
         message: "deleted",
         cv: cv });
     })
     .catch(next)
-
 });
 
 module.exports = router;

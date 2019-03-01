@@ -6,11 +6,11 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  contentId: [String],
-  cvs: [{
-    type: ObjectId,
-    ref: 'Cv'
-  }],
+  // contentId: [String],
+  // cvId: [{
+  //   type: ObjectId,
+  //   ref: 'Cv'
+  // }],
 }, {
   timestamps: {
     createdAt: 'created_at',
