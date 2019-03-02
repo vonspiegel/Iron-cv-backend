@@ -113,9 +113,13 @@ router.put('/update', (req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-  console.log('get user',req.session.currentUser)
-  res.status(200);
-  res.json(req.session.currentUser);
+  const { _id } = req.session.currentUser;
+  User.findOne({_id})
+  .then((user) => {
+    res.status(200);
+    res.json(user);
+  })
+
 })
 
 router.get('/private', isLoggedIn(), (req, res, next) => {
