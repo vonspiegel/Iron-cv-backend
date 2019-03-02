@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { name, user } = req.body;
-  console.log('currentUser ID2', user._id)
   const newCv = new Cv({
     name,
     userId: user._id,
@@ -24,12 +23,12 @@ router.post('/', (req, res, next) => {
   // const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvId: newCv._id } })
   const saveCV = newCv.save()
       .then((response) => {
-      console.log(response)
+      // console.log(response)
       res.status(200)
       res.json(response)
     })
     .catch(next)
-  console.log('saveCv',saveCV)
+  // console.log('saveCv',saveCV)
   // Promise.all([addCVToUser, saveCV])
   //   .then((response) => {
   //     console.log(respoßnse)

@@ -92,6 +92,32 @@ router.post('/logout', (req, res) => {
   return res.status(204).send();
 });
 
+router.put('/update', (req, res, next) => {
+  console.log('update now')
+  const { contact, user } = req.body;
+  // console.log(user)
+  const userToUpdate = {
+    user: {...user,
+      contact,
+      socialNetwork: {}},
+  };
+  console.log(userToUpdate)
+  User.findByIdAndUpdate(user._id, userToUpdate.user)
+    .then((user) => {
+      res.status(200);
+      res.json({
+        message: "updated",
+        user: user });
+    })
+    .catch(next)
+});
+
+router.get('/', (req, res) => {
+  console.log('get user',req.session.currentUser)
+  res.status(200);
+  res.json(req.session.currentUser);
+})
+
 router.get('/private', isLoggedIn(), (req, res, next) => {
   res.status(200).json({
     message: 'This is a private message'

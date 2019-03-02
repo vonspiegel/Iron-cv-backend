@@ -12,7 +12,7 @@ const userSchema = new Schema({
     address: String,
     phone: String,
   },
-  socialNet: {
+  socialNetwork: {
     github: String,
     facebook: String,
     linkedin: String,

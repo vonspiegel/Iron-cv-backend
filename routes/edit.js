@@ -15,9 +15,9 @@ router.get('/cv/:id', (req, res, next) => {
 
 router.put('/cv/:id', (req, res, next) => {
   const { id } = req.params;
-  const { type, title, startDate, endDate, description, list } = req.body;
+  const { contentType, title, startDate, endDate, description, list } = req.body;
   const contentToUpdate = {
-    type,
+    contentType,
     title,
     startDate,
     endDate,
