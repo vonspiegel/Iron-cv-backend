@@ -6,16 +6,16 @@ const userSchema = new Schema({
   username: String,
   password: String,
   contact: {
-    firstName: String,
-    lastName: String,
-    email: String,
-    address: String,
-    phone: String,
+    firstName: { type:String, default: '' },
+    lastName: { type:String, default: '' },
+    email: { type:String, default: '' },
+    address: { type:String, default: '' },
+    phone: { type:String, default: '' },
   },
   socialNetwork: {
-    github: String,
-    facebook: String,
-    linkedin: String,
+    github: { type:String, default: '' },
+    facebook: { type:String, default: '' },
+    linkedin: { type:String, default: '' },
   }
 }, {
   timestamps: {
