@@ -4,17 +4,17 @@ const ObjectId = Schema.Types.ObjectId;
 
 const contentSchema = new Schema({
   contentType: String,
-  title: String,
-  name: String,
-  description: String,
-  city: String,
+  title: { type:String, default: '' },
+  name: { type:String, default: '' },
+  description: { type:String, default: '' },
+  city: { type:String, default: '' },
   startDate: {
-    month: String,
-    year: String
+    month: { type:String, default: '' },
+    year: { type:String, default: '' }
   },
   endDate: {
-    month: String,
-    year: String
+    month: { type:String, default: '' },
+    year: { type:String, default: '' }
   },
   tasks: [String],
   userId: {

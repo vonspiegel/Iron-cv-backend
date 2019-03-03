@@ -51,14 +51,15 @@ router.post('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
-  const { contentType, title, startDate, endDate, description, list } = req.body;
+  console.log(id)
+  const { contentType, name, startDate, endDate, description, tasks } = req.body;
   const contentToUpdate = {
     contentType,
-    title,
+    name,
     startDate,
     endDate,
     description,
-    list
+    tasks
   };
 
   Content.findByIdAndUpdate(id, contentToUpdate)
