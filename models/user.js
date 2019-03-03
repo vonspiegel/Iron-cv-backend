@@ -16,7 +16,14 @@ const userSchema = new Schema({
     github: { type:String, default: '' },
     facebook: { type:String, default: '' },
     linkedin: { type:String, default: '' },
-  }
+  },
+  softSkills: [String],
+  hardSkills: [String],
+  interests: [String],
+  languages: [{
+    language: String,
+    level: String,
+  }]
 }, {
   timestamps: {
     createdAt: 'created_at',
