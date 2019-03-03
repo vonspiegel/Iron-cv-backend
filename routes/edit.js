@@ -7,7 +7,7 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { _id } = req.session.currentUser;
 
-  console.log(id)
+  // console.log(id)
   Content.find({userId: _id})
     .then((content) => {
       res.status(200);
@@ -73,7 +73,6 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
-
   Content.findByIdAndDelete(id)
     .then((content) => {
       res.status(200);
