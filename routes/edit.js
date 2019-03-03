@@ -52,16 +52,23 @@ router.post('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
   console.log(id)
-  const { contentType, name, startDate, endDate, description, tasks } = req.body;
-  const contentToUpdate = {
-    contentType,
-    name,
-    startDate,
-    endDate,
-    description,
-    tasks
-  };
-
+  // const { contentType,
+  //         name,
+  //         startDate,
+  //         endDate,
+  //         description,
+  //         tasks
+  //       } = req.body;
+  // const contentToUpdate = {
+  //   contentType,
+  //   title,
+  //   name,
+  //   startDate,
+  //   endDate,
+  //   description,
+  //   tasks
+  // };
+  const contentToUpdate =req.body;
   Content.findByIdAndUpdate(id, contentToUpdate)
     .then((content) => {
       res.status(200);
