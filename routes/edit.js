@@ -5,8 +5,10 @@ const router = express.Router();
 
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
+  const { _id } = req.session.currentUser;
 
-  Content.findById(id)
+  console.log(id)
+  Content.find({userId: _id})
     .then((content) => {
       res.status(200);
       res.json(content);
