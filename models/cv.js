@@ -8,7 +8,7 @@ const cvSchema = new Schema({
   userId: {
       type: ObjectId,
       ref: 'User'
-    },
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',

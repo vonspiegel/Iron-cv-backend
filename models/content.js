@@ -5,6 +5,9 @@ const ObjectId = Schema.Types.ObjectId;
 const contentSchema = new Schema({
   contentType: String,
   title: String,
+  name: String,
+  description: String,
+  city: String,
   startDate: {
     month: String,
     year: String
@@ -13,9 +16,8 @@ const contentSchema = new Schema({
     month: String,
     year: String
   },
-  description: String,
-  list: [String],
-  user: {
+  tasks: [String],
+  userId: {
     type: ObjectId,
     ref: 'User'
   },
