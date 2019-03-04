@@ -12,9 +12,11 @@ const userSchema = new Schema({
     address: { type:String, default: '' },
     phone: { type:String, default: '' },
   },
+  title: { type:String, default: '' },
+  summary: { type:String, default: '' },
   socialNetwork: {
     github: { type:String, default: '' },
-    facebook: { type:String, default: '' },
+    medium: { type:String, default: '' },
     linkedin: { type:String, default: '' },
   },
   softSkills: [String],
