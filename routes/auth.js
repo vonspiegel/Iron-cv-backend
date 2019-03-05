@@ -93,14 +93,8 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/update', (req, res, next) => {
-  const { contact, socialNetwork, user } = req.body;
-  // console.log(user)
-  const userToUpdate = {
-    user: {...user,
-      contact,
-      socialNetwork},
-  };
-  User.findByIdAndUpdate(user._id, userToUpdate.user)
+  const { user } = req.body;
+  User.findByIdAndUpdate(user._id, user)
     .then((user) => {
       res.status(200);
       res.json({

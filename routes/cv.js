@@ -20,22 +20,12 @@ router.post('/', (req, res, next) => {
     name,
     userId: user._id,
   });
-  // const addCVToUser = User.findByIdAndUpdate(_id, { $push: { cvId: newCv._id } })
   const saveCV = newCv.save()
       .then((response) => {
-      // console.log(response)
       res.status(200)
       res.json(response)
     })
     .catch(next)
-  // console.log('saveCv',saveCV)
-  // Promise.all([addCVToUser, saveCV])
-  //   .then((response) => {
-  //     console.log(respoßnse)
-  //     res.status(200)
-  //     res.json(response)
-  //   })
-  //   .catch(next)
 });
 
 router.get('/:id', (req, res, next) => {
@@ -51,7 +41,6 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
   const { name, user, headline, summary } = req.body;
-  console.log('title',req.body.headline)
   const cvToUpdate = {
     name,
     user,
@@ -70,7 +59,6 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
-  // const deleteCVToUser = User.findByIdAndUpdate(id, { $splice: (id , 1) });
   Cv.findByIdAndDelete(id)
     .then((cv) => {
       res.status(200);

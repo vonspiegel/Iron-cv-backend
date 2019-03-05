@@ -6,8 +6,6 @@ const router = express.Router();
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { _id } = req.session.currentUser;
-
-  // console.log(id)
   Content.find({userId: _id})
     .then((content) => {
       res.status(200);
@@ -51,23 +49,6 @@ router.post('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
-  console.log(id)
-  // const { contentType,
-  //         name,
-  //         startDate,
-  //         endDate,
-  //         description,
-  //         tasks
-  //       } = req.body;
-  // const contentToUpdate = {
-  //   contentType,
-  //   title,
-  //   name,
-  //   startDate,
-  //   endDate,
-  //   description,
-  //   tasks
-  // };
   const contentToUpdate =req.body;
   Content.findByIdAndUpdate(id, contentToUpdate)
     .then((content) => {
