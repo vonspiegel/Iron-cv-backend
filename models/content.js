@@ -16,7 +16,7 @@ const contentSchema = new Schema({
     month: { type:String, default: '' },
     year: { type:String, default: '' }
   },
-  tasks: [String],
+  tasks: { type:String, default: '' },
   userId: {
     type: ObjectId,
     ref: 'User'

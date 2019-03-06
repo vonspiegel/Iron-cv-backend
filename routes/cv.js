@@ -40,13 +40,7 @@ router.get('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const { id } = req.params;
-  const { name, user, headline, summary } = req.body;
-  const cvToUpdate = {
-    name,
-    user,
-    headline,
-    summary,
-  };
+  const cvToUpdate = req.body
   Cv.findByIdAndUpdate(id, cvToUpdate)
     .then((cv) => {
       res.status(200);

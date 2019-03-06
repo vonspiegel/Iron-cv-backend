@@ -9,10 +9,17 @@ const cvSchema = new Schema({
       type: ObjectId,
       ref: 'User'
   },
-  contentId: [{
-    type: ObjectId,
-    ref: 'Content'
+  contentInfo: [{
+    display: { type:Boolean, default: true },
+    contentId: {
+      type: ObjectId,
+      ref: 'Content'
+    }
   }],
+  // contentId: [{
+  //   type: ObjectId,
+  //   ref: 'Content'
+  // }],
   headline: { type:String, default: ''},
   summary: { type:String, default: ''},
 }, {
