@@ -10,9 +10,9 @@ router.get('/me', (req, res, next) => {
     res.json(req.session.currentUser);
   } else {
     res.status(404).json({
-      error: 'not-found'
+      error: 'not-found',
     });
-  }
+  };
 });
 
 router.post('/login', (req, res, next) => {
@@ -20,7 +20,7 @@ router.post('/login', (req, res, next) => {
     return res.status(401).json({
       error: 'unauthorized'
     });
-  }
+  };
 
   const { username, password } = req.body;
 
@@ -28,7 +28,7 @@ router.post('/login', (req, res, next) => {
     return res.status(422).json({
       error: 'validation'
     });
-  }
+  };
 
   User.findOne({
       username
@@ -60,7 +60,7 @@ router.post('/signup', (req, res, next) => {
     return res.status(422).json({
       error: 'empty'
     });
-  }
+  };
 
   User.findOne({
       username
@@ -70,7 +70,7 @@ router.post('/signup', (req, res, next) => {
         return res.status(422).json({
           error: 'username-not-unique'
         });
-      }
+      };
 
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
@@ -110,9 +110,8 @@ router.get('/', (req, res) => {
   .then((user) => {
     res.status(200);
     res.json(user);
-  })
-
-})
+  });
+});
 
 router.get('/private', isLoggedIn(), (req, res, next) => {
   res.status(200).json({

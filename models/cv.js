@@ -7,18 +7,18 @@ const cvSchema = new Schema({
   name: { type:String, default: 'My resume'},
   userId: {
       type: ObjectId,
-      ref: 'User'
+      ref: 'User',
   },
   contentId: [{
     type: ObjectId,
-    ref: 'Content'
+    ref: 'Content',
   }],
   headline: { type:String, default: ''},
   summary: { type:String, default: ''},
 }, {
   timestamps: {
     createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    updatedAt: 'updated_at',
   },
 });
 
