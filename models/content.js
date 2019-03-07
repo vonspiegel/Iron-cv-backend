@@ -21,10 +21,10 @@ const contentSchema = new Schema({
     type: ObjectId,
     ref: 'User'
   },
-  cvId: [{
-    type: ObjectId,
-    ref: 'Cv'
-  }],
+  // cvId: [{
+  //   type: ObjectId,
+  //   ref: 'Cv'
+  // }],
 }, {
   timestamps: {
     createdAt: 'created_at',

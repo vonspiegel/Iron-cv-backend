@@ -9,13 +9,6 @@ const cvSchema = new Schema({
       type: ObjectId,
       ref: 'User'
   },
-  // contentInfo: [{
-  //   display: { type:Boolean, default: true },
-  //   contentId: {
-  //     type: ObjectId,
-  //     ref: 'Content'
-  //   }
-  // }],
   contentId: [{
     type: ObjectId,
     ref: 'Content'
