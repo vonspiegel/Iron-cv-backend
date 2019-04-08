@@ -26,7 +26,7 @@ const userSchema = new Schema({
     language: String,
     level: String,
   }],
-  avatarURL: { type: String, default: 'https://firebasestorage.googleapis.com/v0/b/iron-cv.appspot.com/o/images%2F1dcf5ae8-eebd-4fc7-b84d-00669bd05142.jpeg?alt=media&token=2e9219a9-4204-4330-a6d0-3e63742c3350'}
+  avatarURL: { type: String, default: 'https://firebasestorage.googleapis.com/v0/b/iron-cv.appspot.com/o/images%2Ff0d17350-9b7a-42bb-87d1-0b7f4ed8582d.png?alt=media&token=c8f67ca2-a29d-4094-96e7-7dbf8edf16ec'}
 }, {
   timestamps: {
     createdAt: 'created_at',
