@@ -25,7 +25,8 @@ const userSchema = new Schema({
   languages: [{
     language: String,
     level: String,
-  }]
+  }],
+  avatarURL: String,
 }, {
   timestamps: {
     createdAt: 'created_at',
