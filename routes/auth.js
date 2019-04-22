@@ -96,6 +96,7 @@ router.put('/update', (req, res, next) => {
   const { user } = req.body;
   User.findByIdAndUpdate(user._id, user)
     .then((user) => {
+      req.session.currentUser = user;
       res.status(200);
       res.json({
         message: "updated",
