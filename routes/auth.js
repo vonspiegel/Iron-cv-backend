@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
   };
 
   const { username, password } = req.body;
-
+  console.log('req.body', req.body)
   if (!username || !password) {
     return res.status(422).json({
       error: 'validation'
